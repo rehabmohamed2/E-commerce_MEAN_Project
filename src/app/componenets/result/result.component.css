@@ -1,0 +1,17 @@
+.cardDesign{
+    min-height: 100%;
+    max-height: 100%;
+  }
+  
+  .fruite {
+    background-color: #f9f9f9; /* Set a background color for the whole section */
+  }
+  .fruite-item{
+    background-color: #f4f5f2; 
+  }
+  
+  .custom-select {
+    /* Control size */
+    font-size: 1.25rem; /* Change font size */
+    padding: 0.5rem 1rem; /* Adjust padding for better spacing */
+  }

@@ -1,0 +1,38 @@
+<div class="container-fluid mt-4">
+  
+<div *ngIf="filteredProducts.length > 0; else noResults">
+  <div class="col-lg-12">
+    <div class="row g-4 justify-content-center">
+      <h1 style="color: #efa91d ;">Reasult Items:</h1>
+      <div class="col-md-6 col-lg-3" *ngFor="let product of filteredProducts">
+        <div class="rounded position-relative  fruite-item border border-secondary"> 
+          <div class="fruite-img">
+              <img [src]="product.thumbnail" class="img-fluid w-100 rounded-top" alt="{{ product.title }}">
+          </div>
+          <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">
+              {{ product.category }}
+          </div>
+          <div class="p-4 border border-top-0 rounded-bottom"> 
+              <h4>{{ product.title }}</h4>
+              <p>{{ product.description }}</p>
+              <div class="d-flex justify-content-between flex-lg-wrap">
+                  <p class="text-dark fs-5 fw-bold mb-0">${{ product.price }}</p>
+                  <a (click)="addToCart(product)" class="btn border border-secondary rounded-pill px-3 text-primary">
+                      <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                  </a>
+                  <button (click)="viewProductDetails(product.id)" class="btn border border-secondary rounded-pill px-3 text-primary">
+                    Details
+                  </button>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noResults>
+  <div>No products found for your search.</div>
+</ng-template>
+
+</div>

@@ -1,0 +1,114 @@
+.hero-header {
+    margin-bottom: 30px;
+    margin-top: 0px; /* Adjust the bottom margin as needed */
+}
+
+.hero-header .container {
+    margin-top: 0px; /* Add or adjust the top margin of the inner container */
+}
+
+.nav-pills .nav-link.active {
+    background-color: #007bff; /* Change this to your desired color */
+    color: white; /* Change text color */
+}
+
+.nav-pills .nav-link {
+    transition: background-color 0.3s;
+}
+
+/* .nav-pills .nav-link:hover {
+    background-color: #0056b3; 
+    color: white; 
+}
+
+.border-custom {
+    border: 2px solid #007bff; 
+}
+
+.p-4 {
+    padding: 1.5rem; 
+} */
+
+.button-width {
+    width: 300px; /* Adjust the width as needed */
+}
+
+.hover-button {
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.hover-button:hover {
+    background-color: #b0b7b7; /* Change to your desired hover color */
+    color: #0056b3; /* Optional: Change text color on hover */
+}
+.fixed-height-card {
+    height: 230px; /* Set your desired fixed height */
+    overflow: hidden; /* Hide overflow content */
+    
+}
+
+
+/* Ensure four cards are in line and have the same height */
+/* Ensure four cards are in line and have the same height */
+.four-in-line {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Ensure the card content maintains a consistent height */
+.same-height-card {
+    height: 300px; /* Set the desired height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space the image and content evenly */
+}
+
+/* Adjust the image size to avoid overflowing */
+.service-item img {
+    height: auto;
+    max-height: 70%; /* Limits image height to leave space for text */
+    width: 100%;
+}
+
+/* Style for the text box below the image */
+.service-content {
+    background-color: rgba(246, 206, 84, 0.8); /* Transparent background */
+    color: white;
+    margin-top: 150px; /* Padding for spacing */
+    text-align: center; /* Center the text */
+}
+
+/* Optional: Improve text readability over background */
+.service-content h5,
+.service-content h3 {
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default paddings */
+}
+
+.carousel-item {
+    position: relative; /* Make sure the carousel item is the positioning context */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute; /* Position buttons absolutely */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for centering */
+    z-index: 5; /* Ensure the buttons are on top of the image */
+    color: white; /* Set text color to white */
+    background-color: rgba(0, 0, 0, 0.358); /* Optional: add a semi-transparent background */
+    border: none; /* Remove borders */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(179, 174, 174, 0.523); /* Lighten background on hover */
+}
+.carousel-control-prev {
+    left: 15px; /* Position the Previous button */
+}
+
+.carousel-control-next {
+    right: 15px; /* Position the Next button */
+}

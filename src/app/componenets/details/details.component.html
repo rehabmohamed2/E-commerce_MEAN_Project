@@ -1,0 +1,89 @@
+<div class="container-fluid py-5 mt-5">
+    <div class="container py-5">
+        
+        <div class="row g-4 mb-5">
+            <div class="col-lg-8 col-xl-9">
+                <div class="row g-4">
+                    
+                    <div class="col-lg-6">
+                        <div class="border rounded">
+                            <a>
+                                <img [src]="itemDetails.thumbnail" class="img-fluid rounded" alt="{{ itemDetails.title }}">
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <h4 class="fw-bold mb-3">{{ itemDetails.title }}</h4>
+                        <p class="mb-3">Category: {{ itemDetails.category }}</p>
+                        <h5 class="fw-bold mb-3">{{ itemDetails.price }}</h5>
+                        <div class="input-group quantity mb-5" style="width: 100px;">
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-minus rounded-circle bg-light border">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                            <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                            <div class="input-group-btn">
+                                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                                    <i class="fa fa-plus"></i>
+                                </button> 
+                            </div>
+                        </div>
+                        <a (click)="addToCart(itemDetails)" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">
+                            <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                        </a>
+                    </div>
+                </div>
+                <hr style="border-top: 1px solid #ccc;"/> <!-- Thin line -->
+
+                <div class="col-lg-12">
+                    <div class="mb-5" style="margin-top: 20px;">
+                        <h5>Description</h5>
+                        <p>{{ itemDetails.description }}</p>
+                    </div>
+                    <hr style="border-top: 1px solid #ccc;"/> <!-- Thin line -->
+                    <div class="mb-5">
+                        <h5>Reviews</h5>
+                        <div *ngFor="let review of itemDetails.reviews" class="d-flex mb-4">
+                            <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 50px; height: 50px;" alt="">
+                            <div>
+                                <p class="mb-1" style="font-size: 14px;">{{ review.date | date:'MMMM d, y' }}</p>
+                                <div class="d-flex justify-content-between">
+                                    <h6>{{ review.reviewerName }}</h6>
+                                    <div class="d-flex mb-3">
+                                        <ng-container *ngFor="let star of [].constructor(review.rating); let i = index">
+                                            <i class="fa fa-star text-secondary" *ngIf="i < 5"></i>
+                                        </ng-container>
+                                        <ng-container *ngFor="let star of [].constructor(5 - review.rating); let i = index">
+                                            <i class="fa fa-star"></i>
+                                        </ng-container>
+                                    </div>
+                                </div>
+                                <p>{{ review.comment }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New section for displaying filtered products -->
+            <div class="col-lg-12">
+                <h5>Other Products</h5>
+                <div class="row">
+                    <div class="col-lg-4" *ngFor="let product of filteredProductsList">
+                        <div class="card">
+                            <img [src]="product.thumbnail" class="card-img-top" alt="{{ product.title }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.title }}</h5>
+                                <p class="card-text">Price: {{ product.price }}</p>
+                                <a (click)="addToCart(product)" class="btn btn-primary">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

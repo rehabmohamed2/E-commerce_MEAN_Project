@@ -1,0 +1,47 @@
+<!-- Navbar start -->
+<div class="container-fluid px-0">
+    <nav class="navbar navbar-light custom-navbar navbar-expand-xl" [ngClass]="{'fixed-top': !isAdminRoute()}">
+        <a href="index.html" class="navbar-brand">
+            <h1 class="text-primary display-6">Shop Cart</h1>
+        </a>
+        
+        <!-- Toggler button for mobile view -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav mx-auto custom-navbar2">
+                <!-- Links that will be shown when the toggler button is clicked -->
+                <a routerLinkActive="active" routerLink="" class="nav-item nav-link">Home</a>
+                <a routerLinkActive="active" routerLink="/products" class="nav-item nav-link">Shop</a>
+                <a routerLinkActive="active" routerLink="/cart" class="nav-item nav-link">Cart</a>
+                <a routerLinkActive="active" routerLink="/contact" class="nav-item nav-link">Contact</a>
+            </div>
+       
+
+        <!-- Other content -->
+        <div class="d-flex m-3 me-0">
+            <div class="input-group">
+                <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Search products..." aria-label="Search">
+                <button class="btn btn-outline-secondary" type="button" (click)="searchProducts()">
+                    <i class="fas fa-search text-primary"></i>
+                </button>
+            </div>
+            <a *ngIf="isLoggedIn() && isAdmin()" routerLinkActive="active" routerLink="/admin" class="nav-item nav-link h5">Admin</a>
+            <a routerLink="/cart" class="position-relative me-4 my-auto ms-3">
+                <i class="fa fa-shopping-bag fa-2x"></i>
+            </a>
+            <a *ngIf="isLoggedIn(); else loginLink" (click)="onLogout()" class="my-auto">
+                <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+            </a>
+            <ng-template #loginLink>
+                <a routerLink="/login" class="my-auto">
+                    <i class="fa fa-sign-in fa-2x"></i>
+                </a>
+            </ng-template>
+        </div>
+    </div>
+    </nav>
+</div>
+<!-- Navbar End -->

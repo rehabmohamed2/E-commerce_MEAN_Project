@@ -1,0 +1,31 @@
+<div class="parent bg-light">
+    <div class="container bg-light">
+        <div class="right-section">
+            <div class="login-container">
+                <form class="login-form ">
+                    <h2 class="login-title"><i class="fas fa-user-circle "></i> Join Now </h2>
+
+                    <div data-mdb-input-init class="form-outline mb-3">
+                        <input  [(ngModel)]="login.userName" name="userName" type="text" id="form3Example3" class="form-control form-control-lg"
+                          placeholder="Name" />
+                      </div>
+
+                    <div data-mdb-input-init class="form-outline mb-3">
+                        <input  [(ngModel)]="login.email" name="email"  type="email" id="form3Example4" class="form-control form-control-lg"
+                          placeholder="Email" />
+                      </div>
+            
+                      <!-- Password input -->
+                      <div data-mdb-input-init class="form-outline mb-3">
+                        <input  [(ngModel)]="login.password" name="password" type="password" id="form3Example5" class="form-control form-control-lg"
+                          placeholder="Password" /> 
+                      </div>
+                    
+                    
+                    <button type="button" (click)="onLogin()">Login</button>
+                </form>
+                <button type="button" class="sign-up" (click)="onRegister()">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>

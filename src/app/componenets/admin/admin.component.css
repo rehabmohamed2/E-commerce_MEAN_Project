@@ -1,0 +1,33 @@
+.filter-section {
+    border: 1px solid #ffc107; /* Border color */
+    color: #333; /* Text color */
+    font-size: 16px; /* General font size */
+    background-color: #f4f5f2;
+  }
+  
+  .filter-section h6 {
+    font-size: 18px; /* Heading font size */
+    color: #81C408; /* Heading color */
+  }
+  
+  .filter-select {
+    font-size: 14px; /* Select box font size */
+    color: #555; /* Select box text color */
+  }
+  
+  /* admin.component.css or global styles */
+.button-custom {
+  background-color: #f7ba35fb; /* Replace with your desired color */
+  color: white; /* Text color */
+  border: none; /* Remove border if needed */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 8px; /* Optional: for rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.button-custom:hover {
+  background-color: #f7ba35fb; /* Darker shade on hover */
+}
+
+  

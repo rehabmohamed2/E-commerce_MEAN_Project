@@ -1,0 +1,46 @@
+.prodImg {
+  margin-top: 24px;
+  min-width: 40%;
+  max-width: 40%;
+  min-height: 75%;
+  max-height: 100%;
+}
+
+.cardDesign{
+  min-height: 100%;
+  max-height: 100%;
+}
+
+.fruite {
+  background-color: #f9f9f9; /* Set a background color for the whole section */
+}
+.fruite-item{
+  background-color: #f4f5f2; 
+}
+
+.custom-select {
+  /* Control size */
+  font-size: 1.25rem; /* Change font size */
+  padding: 0.5rem 1rem; /* Adjust padding for better spacing */
+}
+.disabled {
+  pointer-events: none;
+  opacity: 0.5; /* Makes the disabled links look faded */
+}
+.filter-section {
+  border: 1px solid #ffc107; /* Border color */
+  color: #333; /* Text color */
+  font-size: 16px; /* General font size */
+  background-color: #f4f5f2;
+}
+
+.filter-section h6 {
+  font-size: 18px; /* Heading font size */
+  color: #81C408; /* Heading color */
+}
+
+.filter-select {
+  font-size: 14px; /* Select box font size */
+  color: #555; /* Select box text color */
+}
+

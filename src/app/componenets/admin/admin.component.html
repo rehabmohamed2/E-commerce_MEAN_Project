@@ -1,0 +1,159 @@
+<div class="container-fluid">
+    <div class="row mt-3">
+      <div [ngClass]="isSidePanelVisible ? 'col-8' : 'col-12'">
+        <div class="card">
+          <div class="card-header" style="background-color: #bbe56e;">
+            <div class="row">
+              <div class="col-md-6">
+                <h5>Product List</h5>
+              </div>
+              <div class="col-md-6 text-end">
+                <button class="btn btn-sm button-custom" (click)="openSidePanel()">New</button>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid col-lg-12">
+            <div class="row g-4">
+              <div class="col-xl-2">
+                <!-- Search and Filter Section -->
+                <div class="bg-light ps-3 py-3 rounded mb-4 filter-section">
+                  <select id="categories" name="categorylist" class="border-0 form-select-sm bg-light me-3 filter-select" [(ngModel)]="selectedCategory" (change)="filterByCategory(selectedCategory)">
+                    <option value="">Show All</option>
+                    <option *ngFor="let category of categoryList" [value]="category.slug">{{ category.name }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <div class="tab-content">
+                  <div id="tab-1" class="tab-pane fade show p-0 active">
+                    <div class="row g-4">
+                      <div *ngFor="let product of getCurrentProducts()" class="col-lg-6 col-xl-3">
+                        <div class="p-3 rounded bg-light border border-secondary">
+                          <div class="row align-items-center">
+                            <div class="col-6">
+                              <img [src]="product.thumbnail" class="img-fluid rounded-circle w-100" [alt]="product.name">
+                            </div>
+                            <div class="col-6">
+                              <a href="#" class="h6">{{ product.name }}</a>
+                              <div class="d-flex my-2">
+                                <h4 class="mb-3 h6">{{ product.title }}</h4>
+                              </div>
+                              <h4 class="mb-3 h5">${{ product.price }}</h4>
+                              <div class="d-flex justify-content-end">
+                                <a (click)="onEdit(product)" class="btn btn-sm border border-secondary rounded-pill text-primary me-1 ">
+                                  Edit
+                                </a>
+                                <a class="btn btn-sm border border-secondary rounded-pill text-primary " (click)="onDelete(product.id)">
+                                  Delete
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-12">
+          <div class="pagination d-flex justify-content-center mt-5">
+            <a class="rounded" (click)="previousPage(); $event.preventDefault()" [ngClass]="{'disabled': currentPage === 1}">&laquo;</a>
+            <a *ngFor="let page of [].constructor(totalPages); let i = index"
+               class="rounded"
+               [class.active]="currentPage === i + 1"
+               (click)="currentPage = i + 1; $event.preventDefault()">
+              {{ i + 1 }}
+            </a>
+            <a class="rounded" (click)="nextPage(); $event.preventDefault()" [ngClass]="{'disabled': currentPage === totalPages}">&raquo;</a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-4" *ngIf="isSidePanelVisible" >
+        <div class="card">
+          <div class="card-header " style="background-color: #bbe56e;">
+            <div class="row">
+              <div class="col-md-6">
+                <h5>New Product</h5>
+              </div>
+              <div class="col-md-6 text-end">
+                <button class="btn btn-sm button-custom" (click)="closeSidePanel()">Close</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <form #productFrm="ngForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="fw-semibold my-1">Title</label>
+                  <input type="text" class="form-control" [(ngModel)]="productObj.title" name="title" #title="ngModel" required placeholder="Enter Product Title">
+                  <div class="validation-error" *ngIf="title.touched || title.dirty">
+                    <div *ngIf="title.errors?.['required']">This field is required</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="fw-semibold my-1">Price</label>
+                  <input type="number" class="form-control" [(ngModel)]="productObj.price" name="price" #price="ngModel" required placeholder="Enter Product Price">
+                  <div class="validation-error" *ngIf="price.touched || price.dirty">
+                    <div *ngIf="price.errors?.['required']">This field is required</div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="fw-semibold my-1">Category</label>
+                  <select [(ngModel)]="productObj.category" class="form-select" name="category" #category="ngModel" required>
+                    <option value="" disabled>Select Category...</option>
+                    <option *ngFor="let category of categoryList" [value]="category.slug">{{ category.name }}</option>
+                  </select>
+                  <div class="validation-error" *ngIf="category.touched || category.dirty">
+                    <div *ngIf="category.errors?.['required']">This field is required</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="fw-semibold my-1">Image</label>
+                  <input type="text" class="form-control" [(ngModel)]="productObj.thumbnail" name="image" #image="ngModel" required placeholder="Enter Product Image URL">
+                  <div class="validation-error" *ngIf="image.touched || image.dirty">
+                    <div *ngIf="image.errors?.['required']">This field is required</div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-md-12">
+                  <label class="fw-semibold my-1">Product Description</label>
+                  <textarea class="form-control" [(ngModel)]="productObj.description" name="description" #description="ngModel" required placeholder="Enter Product Description"></textarea>
+                  <div class="validation-error" *ngIf="description.touched || description.dirty">
+                    <div *ngIf="description.errors?.['required']">This field is required</div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row mt-3">
+                <div class="col-md-6 text-end">
+                  <button class="btn btn-sm button-custom" *ngIf="productObj.id == 0" (click)="onReset()">Reset</button>
+                </div>
+                <div class="col-md-6">
+                  <button class="btn btn-sm button-custom" *ngIf="productObj.id == 0" (click)="onSave()">Add Product</button>
+                </div>
+                <div class="col-md-6">
+                  <button class="btn btn-sm button-custom" *ngIf="productObj.id !== 0" (click)="onUpdate()">Update</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
