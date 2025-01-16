@@ -5,6 +5,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## 📖 Project Description
 This is a full-stack e-commerce application built using the MEAN stack (MongoDB, Express.js, Angular, and Node.js). It enables users to browse products, manage shopping carts, and place orders, while admins can manage the products and users efficiently.
 
+## 🎥 Preview
+[![Preview](Screenshot%20(373).png)](Screenshot%20(373).png)
+
+
+
 ### 🌟 Features
 - **User Functionality:**
   - Browse products and categories.
